@@ -2,18 +2,23 @@ object Day3 extends App {
 
   val input = scala.io.Source.fromFile("src/input/Day3.txt", "utf8").mkString
 
+  type Direction = Char
 
-  def nextLocation(loc: (Int, Int), dir: Char) = dir match {
-    case '<' => (loc._1 - 1, loc._2)
-    case '>' => (loc._1 + 1, loc._2)
-    case '^' => (loc._1, loc._2 + 1)
-    case 'v' => (loc._1, loc._2 - 1)
+  case class Point(x: Int, y: Int) {
+    def +(p :(Int,Int)) = Point(x + p._1, y + p._2)
+  }
+
+  def nextLocation(loc: Point, dir: Direction) = dir match {
+    case '<' => loc + (-1, 0)
+    case '>' => loc + (1, 0)
+    case '^' => loc + (0, 1)
+    case 'v' => loc + (0, -1)
     case _ => throw new Exception("Not found")
   }
 
 
   //part one
-  case class PartOneState(visited: Map[(Int, Int), Int], currentLocation: (Int, Int))
+  case class PartOneState(visited: Map[Point, Int], currentLocation: Point)
 
   def doPartOneMove(currentState: PartOneState, direction: Char): PartOneState = {
     val PartOneState(visited, currentLocation) = currentState
@@ -25,7 +30,7 @@ object Day3 extends App {
   }
 
   def partOne = {
-    val initialState = PartOneState(Map(), (0,0))
+    val initialState = PartOneState(Map(), Point(0,0))
     val finalState = input.foldLeft(initialState)(doPartOneMove)
     finalState.visited.size
   }
