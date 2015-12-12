@@ -1,3 +1,5 @@
+package main.scala
+
 object Day9 extends App {
 
   val input = scala.io.Source.fromFile("src/input/Day9.txt").mkString

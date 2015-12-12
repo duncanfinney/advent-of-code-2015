@@ -1,3 +1,5 @@
+package main.scala
+
 //http://adventofcode.com/day/1
 object Day1 extends App {
 

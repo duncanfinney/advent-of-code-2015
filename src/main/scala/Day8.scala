@@ -1,3 +1,5 @@
+package main.scala
+
 //WIP
 object Day8 extends App {
 

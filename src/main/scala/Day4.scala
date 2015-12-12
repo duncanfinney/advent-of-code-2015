@@ -1,5 +1,4 @@
-import java.math.BigInteger
-import java.security.MessageDigest
+package main.scala
 
 object Day4 extends App {
 

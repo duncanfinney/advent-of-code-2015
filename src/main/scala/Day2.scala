@@ -1,3 +1,5 @@
+package main.scala
+
 object Day2 extends App {
 
   case class Box(l: Int, w: Int, h: Int) {

@@ -1,3 +1,5 @@
+package main.scala
+
 object Day6 extends App {
 
   case class Point(x: Int, y: Int)

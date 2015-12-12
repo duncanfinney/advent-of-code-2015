@@ -1,6 +1,4 @@
-import com.sun.tools.javac.jvm.Items
-
-import scala.util.matching.Regex
+package main.scala
 
 object Day5 extends App {
 

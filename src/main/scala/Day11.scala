@@ -1,3 +1,5 @@
+package main.scala
+
 object Day11 extends App {
 
   //requirement 1

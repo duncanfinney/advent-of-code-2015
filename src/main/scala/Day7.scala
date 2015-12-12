@@ -1,3 +1,5 @@
+package main.scala
+
 //TODO: Finish me
 object Day7 extends App {
 
