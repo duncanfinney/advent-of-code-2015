@@ -3,31 +3,23 @@ package main.scala
 //WIP
 object Day8 extends App {
 
-  val input =
-    scala.io.Source.fromFile("src/input/Day8.txt")
+  val input = scala.io.Source.fromFile("src/input/Day8.txt")
     .mkString
     .split("\n")
-//  val input =
-//    """
-//      |""
-//      |"abc"
-//      |"aaa\"aaa"
-//      |"\x27"
-//    """.stripMargin
-//       .split("\n")
-//       .filter(_.length > 0)
 
-  //part one
-  val totalCharactersOfCode = input.map(_.length).sum
-  val totalCharactersOfStr = input.map(x => {
-    val replaced = x.replaceAll("(^\"|\"$)", "")
-      .replaceAll("(\\\\|\\\")", "|")
-      .replaceAll("(\\\\x[0-9a-f]+)", "|")
+  val regex = raw"(\\+)(x[^\\]{2}|.)".r
 
-    println(s"$x (${x.length}) -> $replaced (${replaced.length})")
-    replaced.length
+  val part1 = input.map { line =>
+    regex.findAllMatchIn(line).map { m =>
+      val backslashes = m.group(1).size
+      val evenNumber = backslashes % 2 == 0
+      backslashes / 2 + (if (evenNumber) 0 else m.group(2).size)
+    }.sum + 2
+  }.sum
 
-  }).sum
-  val partOne = totalCharactersOfCode - totalCharactersOfStr
-  println("partOne", partOne)
+
+  val part2 = input.map(_.count(Seq('\\', '"').contains) + 2).sum
+
+  println("part1", part1)
+  println("part2", part2)
 }
