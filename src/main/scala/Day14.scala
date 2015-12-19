@@ -23,4 +23,16 @@ object Day14 extends App {
 
   println("part1", part1)
 
+
+  //part two
+  val reindeer = input.map(stringToReindeer)
+  val winnersEachSecond : List[(String, Int)] = (for (sec <- 1 to 2503) yield reindeer.map(r => (r.name, distance(r, sec))).maxBy(_._2)).toList
+
+  val part2 = winnersEachSecond
+    .groupBy{ case (name, dist) => name }
+    .map(_._2.length)
+    .max
+
+  println("part2", part2)
+
 }
