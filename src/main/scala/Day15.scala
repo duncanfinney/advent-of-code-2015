@@ -48,13 +48,28 @@ object Day15 extends App {
     ) == 62842880
   )
 
+  //part 1
 
-  val answer1 = splitFourWays(100)
+  val part1 = splitFourWays(100)
     .map(quantities => quantities.zip(inputIngredients)) // List[(num, Ingredient)]
     .map(getIngredientScore)
     .max
 
 
-  println("part1", answer1);
+  println("part1", part1)
+
+  //part 2
+
+  def calories(ingredients: Seq[(Int, Ingredient)]) = ingredients
+    .map{ case (amount, ing) => amount * ing.calories }
+    .sum
+
+  val part2 = splitFourWays(100)
+    .map(quantities => quantities.zip(inputIngredients)) // Seq[(num, Ingredient)]
+    .filter(calories(_) == 500)
+    .map(getIngredientScore)
+    .max
+
+  println("part2", part2)
 
 }
