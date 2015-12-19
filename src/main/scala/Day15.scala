@@ -13,10 +13,10 @@ object Day15 extends App {
 
   val inputIngredients =
     scala.io.Source.fromFile("src/input/Day15.txt")
-    .mkString
-    .split("\n")
-    .toList
-    .map(parseLine)
+      .mkString
+      .split("\n")
+      .toList
+      .map(parseLine)
 
 
   def splitFourWays(i: Int) = for {
@@ -27,30 +27,34 @@ object Day15 extends App {
   } yield Seq(a, b, c, d)
 
 
-  def splitNWays(n :Int)(i: Int) = {
-
-  }
-
-
   def getIngredientScore(ingredients: Seq[(Int, Ingredient)]) = {
     val capacity = ingredients.map { case (amount, ing) => amount * ing.capacity }.sum
     val durability = ingredients.map { case (amount, ing) => amount * ing.durability }.sum
     val flavor = ingredients.map { case (amount, ing) => amount * ing.flavor }.sum
     val texture = ingredients.map { case (amount, ing) => amount * ing.texture }.sum
 
-    println(ingredients)
-    println(capacity, durability, flavor, texture)
-
-    capacity * durability * flavor * texture
+    if (capacity < 0 || durability < 0 || flavor < 0 || texture < 0)
+      0
+    else
+      capacity * durability * flavor * texture
   }
 
+  assert(
+    getIngredientScore(
+      Seq(
+        (44, Ingredient("Butterscotch", -1, -2, 6, 3, 8)),
+        (56, Ingredient("Cinnamon", 2, 3, -2, -1, 3))
+      )
+    ) == 62842880
+  )
+
+
   val answer1 = splitFourWays(100)
-    .slice(11, 12)
     .map(quantities => quantities.zip(inputIngredients)) // List[(num, Ingredient)]
     .map(getIngredientScore)
     .max
 
 
-  println(answer1)
+  println("part1", answer1);
 
 }
