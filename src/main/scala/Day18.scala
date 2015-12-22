@@ -18,21 +18,28 @@ object Day18 extends App {
       case (x, y) => x >= 0 && x <= 99 && y >= 0 && y <= 99
     }
 
-    point match {
-      case (x, y) => List(
-        (x, y - 1),
-        (x + 1, y - 1),
-        (x + 1, y),
-        (x + 1, y + 1),
-        (x, y + 1),
-        (x - 1, y + 1),
-        (x - 1, y),
-        (x - 1, y + 1)
-      ).filter(isValidPoint)
-    }
+    def add(point: (Int, Int), delta: (Int, Int)) = (point._1 + delta._1, point._2 + delta._2)
+
+    List(
+      add(point, (0, -1)),
+      add(point, (1, -1)),
+      add(point, (1, 0)),
+      add(point, (1, 1)),
+      add(point, (0, 1)),
+      add(point, (-1, 1)),
+      add(point, (-1, 0)),
+      add(point, (-1, -1))
+    ).filter(isValidPoint)
   }
 
-  def shouldLightBeOn(currentState: Map[(Int, Int), Boolean])(point: (Int, Int)): Boolean = {
+  val PART_2_ALWAYS_ON_POINTS = List((0, 0), (99, 0), (99, 99), (0, 99))
+
+  def shouldLightBeOn(currentState: Map[(Int, Int), Boolean], part2: Boolean)(point: (Int, Int)): Boolean = {
+
+    if (part2 && PART_2_ALWAYS_ON_POINTS.contains(point)) {
+      return true
+    }
+
     val neighbors = getNeighbors(point)
     if (currentState(point)) {
       //handle on
@@ -43,16 +50,24 @@ object Day18 extends App {
     }
   }
 
-  def getNextState(currentState: Map[(Int, Int), Boolean]): Map[(Int, Int), Boolean] =
+  def getNextState(currentState: Map[(Int, Int), Boolean], part2: Boolean = false): Map[(Int, Int), Boolean] =
     for (point <- currentState)
-      yield point._1 -> shouldLightBeOn(currentState)(point._1)
+      yield point._1 -> shouldLightBeOn(currentState, part2)(point._1)
 
 
   //part1
-  val part1 = 
+  val part1 =
     (1 to 100)
-    .foldLeft(initialState){ case (curr, _) => getNextState(curr) }
-    .count{ case (point, isOn) => isOn }
-  
+      .foldLeft(initialState) { case (curr, _) => getNextState(curr) }
+      .count { case (_, isOn) => isOn }
+
   println("part1", part1)
+
+  //part2
+  val part2 =
+    (1 to 100)
+      .foldLeft(initialState) { case (curr, _) => getNextState(curr, true) } //part2 = true
+      .count { case (_, isOn) => isOn }
+
+  println("part2", part2)
 }
