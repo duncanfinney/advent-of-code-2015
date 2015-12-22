@@ -31,19 +31,24 @@ object Day19 extends App {
     }
   }
 
-  val inputReplacements = input.map(line => {
+  val backgwardsReplacement = input.map(line => {
     val parseRegex(from, to) = line
-    Replacement(from, to)
+    Replacement(to, from) //backwards replacement for part two
   })
 
-  def getAllNeighbors(str: String): Stream[String] = {
-    def neighborsOf(str: String) = inputReplacements.toStream.flatMap(_.getNeighbors(str))
-    lazy val neighbors: Stream[String] = str #:: neighbors.flatMap(neighborsOf)
+  def getReverseNeighbors(str: String): Stream[(String, Int)] = {
+    def neighborsOf(pair: (String, Int)) = {
+        backgwardsReplacement
+          .flatMap(_.getNeighbors(pair._1))
+          .sortBy(_.length)
+          .map(s => (s, pair._2 + 1))
+          .toStream
+    }
+
+    lazy val neighbors: Stream[(String, Int)] = (str, 0) #:: neighbors.flatMap(neighborsOf)
     neighbors
   }
 
-  println(getAllNeighbors("e").find(_ == "HCaF"))
-
-  //  println(from(10).take(10).toList)
+    getReverseNeighbors(initialMolecule).find(_._1 == "e")
 
 }
