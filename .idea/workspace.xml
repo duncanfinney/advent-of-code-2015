@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="261450af-94fc-4c03-955e-0e99e779832d" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/input/Day23.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/scala/Day23.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/Day21.scala" afterPath="$PROJECT_DIR$/src/main/scala/Day21.scala" />
     </list>
     <ignored path="advent-of-code.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,11 +61,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Day21.scala" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Day21.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/Day21.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.67741936">
+            <state vertical-scroll-proportion="0.0">
               <caret line="72" column="19" selection-start-line="72" selection-start-column="19" selection-end-line="72" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Day23.scala" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/Day23.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.82107353">
+              <caret line="85" column="1" selection-start-line="0" selection-start-column="0" selection-end-line="85" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -101,7 +112,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Day1.scala" />
         <option value="$PROJECT_DIR$/src/input/Day2" />
         <option value="$PROJECT_DIR$/src/Day2.scala" />
         <option value="$PROJECT_DIR$/src/input/Day3.txt" />
@@ -150,6 +160,9 @@
         <option value="$PROJECT_DIR$/src/input/Day19.txt" />
         <option value="$PROJECT_DIR$/src/main/scala/Day19.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/Day21.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/Day22.scala" />
+        <option value="$PROJECT_DIR$/src/input/Day23.txt" />
+        <option value="$PROJECT_DIR$/src/main/scala/Day23.scala" />
       </list>
     </option>
   </component>
@@ -226,14 +239,6 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -287,7 +292,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/duncan/code/advent-of-code/src/input/Day15.txt" />
   </component>
-  <component name="RunManager" selected="Application.Day21">
+  <component name="RunManager" selected="Application.Day23">
     <configuration default="false" name="Day18" type="Application" factoryName="Application" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="Day18" />
@@ -318,21 +323,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="Day21Two" type="Application" factoryName="Application" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="Day21Two" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="advent-of-code" />
-      <envs />
-      <method />
-    </configuration>
     <configuration default="false" name="Day20" type="Application" factoryName="Application" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="Day20" />
@@ -351,6 +341,21 @@
     <configuration default="false" name="Day19" type="Application" factoryName="Application" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="Day19" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="advent-of-code" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Day23" type="Application" factoryName="Application" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="Day23" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -673,17 +678,17 @@
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.Day18" />
       <item index="1" class="java.lang.String" itemvalue="Application.Day21" />
-      <item index="2" class="java.lang.String" itemvalue="Application.Day21Two" />
-      <item index="3" class="java.lang.String" itemvalue="Application.Day20" />
-      <item index="4" class="java.lang.String" itemvalue="Application.Day19" />
+      <item index="2" class="java.lang.String" itemvalue="Application.Day20" />
+      <item index="3" class="java.lang.String" itemvalue="Application.Day19" />
+      <item index="4" class="java.lang.String" itemvalue="Application.Day23" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.Day21" />
-        <item index="1" class="java.lang.String" itemvalue="Application.Day19" />
-        <item index="2" class="java.lang.String" itemvalue="Application.Day18" />
-        <item index="3" class="java.lang.String" itemvalue="Application.Day20" />
-        <item index="4" class="java.lang.String" itemvalue="Application.Day21Two" />
+        <item index="0" class="java.lang.String" itemvalue="Application.Day23" />
+        <item index="1" class="java.lang.String" itemvalue="Application.Day21" />
+        <item index="2" class="java.lang.String" itemvalue="Application.Day19" />
+        <item index="3" class="java.lang.String" itemvalue="Application.Day18" />
+        <item index="4" class="java.lang.String" itemvalue="Application.Day20" />
       </list>
     </recent_temporary>
   </component>
@@ -742,8 +747,8 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.368758" sideWeight="0.49427754" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2160229" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.49213162" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.368758" sideWeight="0.50572246" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32010242" sideWeight="0.4899857" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.368758" sideWeight="0.50572246" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32010242" sideWeight="0.4899857" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18597998" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.49427754" order="1" side_tool="false" content_ui="tabs" />
@@ -779,20 +784,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/scala/Day1.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/input/Day2.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49658313">
-          <caret line="975" column="7" selection-start-line="975" selection-start-column="7" selection-end-line="975" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/input/Day3.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1139,8 +1130,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/Day21.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.67741936">
+        <state vertical-scroll-proportion="0.0">
           <caret line="72" column="19" selection-start-line="72" selection-start-column="19" selection-end-line="72" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/input/Day23.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9354839">
+          <caret line="46" column="6" selection-start-line="46" selection-start-column="6" selection-end-line="46" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/Day23.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.82107353">
+          <caret line="85" column="1" selection-start-line="0" selection-start-column="0" selection-end-line="85" selection-end-column="1" />
           <folding />
         </state>
       </provider>
