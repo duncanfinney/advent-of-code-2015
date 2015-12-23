@@ -1,99 +1,79 @@
-import scala.annotation.tailrec
-
 object Day21 extends App {
 
-  trait Item {
-    def name: String
-    def cost: Int
-    def armor: Int
-    def damage: Int
-  }
+  case class Item(name: String, cost: Int, damage: Int, armor: Int)
 
-  case class Weapon(name: String, cost: Int, armor: Int, damage: Int) extends Item
-  case class Armor(name: String, cost: Int, armor: Int, damage: Int) extends Item
-  case class Ring(name: String, cost: Int, armor: Int, damage: Int) extends Item
+  val weapons = Set(
+    Item("Dagger", 8, 4, 0),
+    Item("Shortsword", 10, 5, 0),
+    Item("Warhammer", 25, 6, 0),
+    Item("Longsword", 40, 7, 0),
+    Item("Greataxe", 74, 8, 0))
 
-  val allItems = List(
-    Weapon("Dagger", 8, 4, 0),
-    Weapon("Shortsword", 10, 5, 0),
-    Weapon("Warhammer", 25, 6, 0),
-    Weapon("Longsword", 40, 7, 0),
-    Weapon("Greataxe", 74, 8, 0),
+  val armor = Set(
+    Item("No Armor", 0, 0, 0),
+    Item("Leather", 13, 0, 1),
+    Item("Chainmail", 31, 0, 2),
+    Item("Splintmail", 53, 0, 3),
+    Item("Bandedmail", 75, 0, 4),
+    Item("Platemail", 102, 0, 5))
 
-    Armor("Leather", 13, 0, 1),
-    Armor("Chainmail", 31, 0, 2),
-    Armor("Splintmail", 53, 0, 3),
-    Armor("Bandedmail", 75, 0, 4),
-    Armor("Platemail", 102, 0, 5),
-
-    Ring("Damage +1", 25, 1, 0),
-    Ring("Damage +2", 50, 2, 0),
-    Ring("Damage +3", 100, 3, 0),
-    Ring("Defense +1", 20, 0, 1),
-    Ring("Defense +2", 40, 0, 2),
-    Ring("Defense +3", 80, 0, 3)
+  val rings = Set(
+    Item("None 1", 0, 0, 0),
+    Item("None 2", 0, 0, 0),
+    Item("Damage +1", 25, 1, 0),
+    Item("Damage +2", 50, 2, 0),
+    Item("Damage +3", 100, 3, 0),
+    Item("Defense +1", 20, 0, 1),
+    Item("Defense +2", 40, 0, 2),
+    Item("Defense +3", 80, 0, 3)
   )
 
+  case class Player(name: String, hp: Int, damage: Int, armor: Int) {
+    def takeHit(damageScore: Int): Option[Player] = {
+      val damageTaken = Math.max(damageScore - armor, 1)
+      if (damageTaken >= hp) None
+      else Some(Player(name, hp - damageTaken, damage, armor))
+    }
 
-  object Turn extends Enumeration {
-    type Turn = Value
-    val Boss, Player = Value
+    def equip(item: Item): Player = {
+      Player(name, hp, damage + item.damage, armor + item.armor)
+    }
   }
 
-  import Turn._
-
-  case class Player(items: List[Item], hitPoints: Int) {
-
-    val cost = items.map(_.cost).sum
-    val armor = items.map(_.armor).sum
-    val damage = items.map(_.damage).sum
-
-    def doDamage(amt: Int) = Player(items, hitPoints - amt)
+  def attackerWins(attacker: Player, defender: Player): Boolean = {
+    val fogOfWar = defender.takeHit(attacker.damage)
+    fogOfWar match {
+      case None => true
+      case Some(survivor) => !attackerWins(survivor, attacker)
+    }
   }
 
-  case class Boss(hitPoints: Int, damage: Int, armor: Int) {
-    def doDamage(amt: Int) = Boss(hitPoints - amt, damage, armor)
-  }
+  val player = Player("Player", 100, 0, 0)
+  val boss = Player("Boss", 109, 8, 2)
 
+  val part1 = (
+    for {
+      weapon <- weapons
+      armor <- armor
+      ring1 <- rings
+      ring2 <- rings - ring1
+      equippdPlayer = player.equip(weapon).equip(armor).equip(ring1).equip(ring2)
+      if attackerWins(equippdPlayer, boss)
+    } yield (weapon.cost + armor.cost + ring1.cost + ring2.cost, weapon, armor, ring1, ring2))
+    .minBy(_._1)
 
-  case class GameState(player: Player, boss: Boss, nextToAttack: Turn) {
+  println("part1", part1)
 
-    val isOver = player.hitPoints <= 0 || boss.hitPoints <= 0
+  val part2 = (
+    for {
+      weapon <- weapons
+      armor <- armor
+      ring1 <- rings
+      ring2 <- rings - ring1
+      equippdPlayer = player.equip(weapon).equip(armor).equip(ring1).equip(ring2)
+      if !attackerWins(equippdPlayer, boss)
+    } yield (weapon.cost + armor.cost + ring1.cost + ring2.cost, weapon, armor, ring1, ring2))
+    .maxBy(_._1)
 
-    lazy val nextState =
-      if (nextToAttack == Turn.Player)
-        GameState(player, boss.doDamage(Math.max(player.damage - boss.armor, 1)), Turn.Boss)
-      else
-        GameState(player.doDamage(Math.max(boss.damage - player.armor, 1)), boss, Turn.Player)
-
-    @tailrec
-    final def winner: Turn =
-      if (player.hitPoints <= 0)
-        Turn.Boss
-      else if (boss.hitPoints <= 0)
-        Turn.Player
-      else
-        nextState.winner
-
-  }
-
-  //part1
-  def isValidCombination(items: List[Item]) = {
-    val weaponsCount = items.count(_.isInstanceOf[Weapon])
-    val armorCount = items.count(_.isInstanceOf[Armor])
-    val ringCount = items.count(_.isInstanceOf[Ring])
-    weaponsCount == 1 && armorCount <= 1 && ringCount <= 2
-  }
-
-  val allPossibleCombinations = (allItems.combinations(4) ++ allItems.combinations(3) ++ allItems.combinations(2) ++ allItems.combinations(1)) filter isValidCombination
-
-  val part1 = allPossibleCombinations
-    .map(items => GameState(Player(items, 100), Boss(104, 8, 1), Turn.Player))
-    .filter(_.winner == Turn.Player) //winner = player
-    .map { case GameState(Player(items, _), _, _) => items.map(_.cost).sum }
-    .toList
-    .min
-
-  println("Part1", part1)
-
+  println("Part2", part2)
 }
