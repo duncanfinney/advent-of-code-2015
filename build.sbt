@@ -5,7 +5,8 @@ mainClass in (Compile, run) := Some("main.scala.Day12")
 
 libraryDependencies ++= Seq(
   "org.scalatest" % "scalatest_2.11" % "2.2.4" % "test",
-  "com.typesafe.play" %% "play-json" % "2.3.4"
+  "com.typesafe.play" %% "play-json" % "2.3.4",
+  "com.lihaoyi" %% "fastparse" % "0.3.4"
 )
 
 resolvers ++= Seq("Typesafe Repo" at "http://repo.typesafe.com/typesafe/releases/")

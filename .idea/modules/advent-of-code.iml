@@ -49,6 +49,24 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
+      <library name="SBT: com.lihaoyi:fastparse-utils_2.11:0.3.4:jar">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.ivy2/cache/com.lihaoyi/fastparse-utils_2.11/jars/fastparse-utils_2.11-0.3.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="SBT: com.lihaoyi:fastparse_2.11:0.3.4:jar">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.ivy2/cache/com.lihaoyi/fastparse_2.11/jars/fastparse_2.11-0.3.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
       <library name="SBT: com.typesafe:config:1.2.1:jar">
         <CLASSES>
           <root url="jar://$USER_HOME$/.ivy2/cache/com.typesafe/config/bundles/config-1.2.1.jar!/" />
@@ -112,7 +130,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="SBT: org.scala-lang:scala-library:2.11.1:jar" type="Scala">
+      <library name="SBT: org.scala-lang:scala-library:2.11.7:jar" type="Scala">
         <properties>
           <compiler-classpath>
             <root url="file://$USER_HOME$/.ivy2/cache/org.scala-lang/scala-compiler/jars/scala-compiler-2.11.1.jar" />
@@ -121,16 +139,7 @@
           </compiler-classpath>
         </properties>
         <CLASSES>
-          <root url="jar://$USER_HOME$/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library name="SBT: org.scala-lang:scala-library:2.11.2:jar">
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.2.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.7.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
